@@ -26,6 +26,7 @@ const createUser = async (req,res, next) =>{
         password,
         username
     })
+    req.session.userId = newUSer.id;
     res.status(201).json(newUser)
 }
 
@@ -40,6 +41,7 @@ const signInHandler = async (req,res,next)=>{
     if( !USERS.comparePassword(identifierUser.password,password)){
         return next( new HttpError('Wrong password'))
     }
+    req.session.userId = newUser.id;
     res.status(200).json({message : "Login sucessfully"});
 }
 exports.createUser = createUser;
