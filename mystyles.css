@@ -1,0 +1,301 @@
+
+:root {
+    --white: #fff;
+    --light-grey: #EEEEEE;
+    --grey: #6c757d;
+    --dark: #222831;
+    --light-dark: #393e46;
+    --light-blue: #00adb5;
+    --purple: #800080;
+    --light-purple: #915191;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Roboto Slab', sans-serif;
+}
+/* navbar */
+
+.top-fill{
+    width: auto;
+    height: 50px;
+    background-color: var(--grey);
+}
+
+.nav-fill{
+    height: 91px;
+}
+
+.nav {
+    background-color: rgb(238, 238, 238, 1);
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    overflow: hidden;
+    height: 90px;
+    border-block-end: 0.5px solid;
+}
+
+.container {
+    display: flex;
+    flex-shrink: 0;
+    justify-content: space-around;
+    align-items: center;
+    margin: 20px;
+    width: 100vw;
+    height: 50px;
+}
+
+.logo {
+    font-size: 40px;
+    font-weight: 500;
+    background: rgb(73,146,148);
+    background: linear-gradient(63deg, rgba(73,146,148,1) 31%, rgba(183,64,215,1) 48%, rgba(78,125,143,1) 69%); 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    align-items: center;
+}
+
+.highfive {
+    height: 40px;
+    width: auto;
+}
+
+.nav a{
+    padding: 14px 16px;
+    font-size: 17px;
+    text-decoration: none;
+    flex: 1;
+    outline: none;
+    text-align: center;
+    line-height: 3;
+    color: black;
+}
+.nav a.active {
+    color: purple;
+}
+
+.links_direct a.active{
+    border-bottom: 3px solid var(--purple);
+}
+
+.links_direct a:hover,
+#login:hover{
+    border-bottom: 3px solid var(--purple);
+}
+
+#signup {
+    width: 20px;
+    padding: 10px;
+    color: var(--light-grey);
+    background-color: var(--purple);
+    border-radius: 5px;
+}
+
+#signup:hover{
+    background-color: var(--light-purple);
+}
+
+/* introduction */
+.introduction {
+    display: flex;
+    background-color: var(--dark-less);
+    width: auto;
+    height: 540px;
+    overflow: hidden;
+    
+}
+
+.introduction video {
+    width: 100%;
+    height: 540px;
+    position: absolute;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.slogan {
+    z-index: 1;
+    position: absolute;
+    left: 200px;
+    perspective: 1000px;
+    margin-top: 100px;
+    text-shadow: 1px 1px 1px #919191,
+    1px 2px 1px rgba(0, 0, 0, 0.3),
+    1px 3px 1px rgba(0, 0, 0, 0.3),
+    1px 4px 1px rgba(0, 0, 0, 0.3),
+    1px 5px 1px rgba(0, 0, 0, 0.3),
+    1px 20px 40px rgba(0, 0, 0, 0.3);
+    top: 20;
+    color: var(--light-grey);
+}
+
+.slogan-header{
+    width: 300px;
+    font-size: 40px;
+}
+
+.slogan p{
+    width: 400px;
+}
+
+/* Giao vien */
+.teachers {
+    background-color: var(--light-grey);
+    text-align: center;
+    height: 600px;
+    width: auto;
+    padding: 15px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.teachers_info_header {
+    font-size: 36px;
+    color: var(--black-blue);
+    margin-bottom: 0px;
+}
+
+.teachers_info {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.box {
+    position: relative;
+    width: 300px;
+    height: 450px;
+    background: var(--light-grey);
+    margin: 0 20px 20px 40px;
+}
+
+.box::before{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: transparent;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 100px 0 40px var(--light-grey);
+}
+
+.box .circle {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    background: rgb(183,64,215);
+    background: linear-gradient(293deg, rgba(183,64,215,1) 32%, rgba(169,11,210,1) 44%, rgba(133,39,158,1) 56%);
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.box .circle img,
+.box img {
+    position: absolute;
+    bottom: 0;
+    left:50%;
+    transform: translateX(-50%);
+    height: 450px;
+}
+
+.teachers_info p {
+    background-color: rgb(128, 128, 128, 0.5);
+    color: var(--white);
+    position: absolute;
+    width: 300px;
+    bottom: 0;
+    z-index: 1;
+}
+
+/* Hoc sinh tieu bieu */
+.students {
+    text-align: center;
+    height: 500px;
+    width: auto;
+    padding: 15px;
+    background-color: var(--white);
+}
+
+.students_info_header {
+    font-size: 36px;
+    color: var(--black-blue);
+}
+
+.students_info {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; 
+}
+
+.card {
+    margin-left: 20px;
+    position: relative;
+    width: 300px;
+    height: 350px;
+    border-radius: 5px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.card img {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(108, 117, 125, 0.5);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: var(--white);
+}
+
+.card:hover .overlay{
+    height: 40%;
+}
+  
+.overlay .header {
+    font-size: 25px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
+
+/* footer */
+.footer {
+    background-color: var(--dark);
+    font-size: 18px;
+    color: var(--light-grey);
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
