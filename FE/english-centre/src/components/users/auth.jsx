@@ -1,49 +1,24 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
-import Input from '@mui/material/Input';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
-import TextField from '@mui/material/TextField';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import Key from '@mui/icons-material/Key';
+import Form from 'react-bootstrap/Form';
+
+import './auth.css'
 
 export default function InputWithIcon() {
   return (
-    <Box sx={{ '& > :not(style)': { m: 1 } }}>
-      <FormControl variant="standard">
-        <InputLabel htmlFor="input-with-icon-adornment">
-          With a start adornment
-        </InputLabel>
-        <Input
-          id="input-with-icon-adornment"
-          startAdornment={
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          }
-        />
-        <Input
+    <>
+      <Form.Label htmlFor="inputPassword5">Password</Form.Label>
+      <Form.Control
         type="password"
-        placeholder="Type in here…"
+        id="inputPassword5"
+        aria-describedby="passwordHelpBlock"
       />
-      </FormControl>
-      <TextField
-        id="input-with-icon-textfield"
-        label="TextField"
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <AccountCircle />
-            </InputAdornment>
-          ),
-        }}
-        variant="standard"
-      />
-      <Box sx={{ display: 'flex', alignItems: 'flex-end' }}>
-        <AccountCircle sx={{ color: 'action.active', mr: 1, my: 0.5 }} />
-        <TextField id="input-with-sx" label="With sx" variant="standard" />
-      </Box>
-    </Box>
+      <Form.Text>
+        
+      </Form.Text>
+      <Form.Text id="passwordHelpBlock" className='input-text' muted>
+        Your password must be 8-20 characters long, contain letters and numbers,
+        and must not contain spaces, special characters, or emoji.
+      </Form.Text>
+    </>
   );
 }

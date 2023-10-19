@@ -1,0 +1,9 @@
+button {
+   background-color:  rgba(183,64,215,1);
+   border-radius: 20%;
+}
+
+button > img {
+    filter: invert(100%) sepia(58%) saturate(0%) hue-rotate(90deg) brightness(109%) contrast(101%);
+    width: 20px;
+}
