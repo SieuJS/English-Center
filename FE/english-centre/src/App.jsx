@@ -2,8 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ButtonAppBar from './components/navigations/main-navigation'
-import Button from '@mui/material/Button'
+import MainNavigation from './components/navigations/MainNavigation'
 import Home from './components/pages/Home'
 import Auth from './components/users/auth'
 
@@ -14,8 +13,10 @@ function App() {
   return (
     <BrowserRouter>
     <>
-    <ButtonAppBar navId = {"main-nav"}/>
+    <MainNavigation navId = {"main-nav"}/>
     <Routes>
+    <Route path = "/" element = {<Home/>}>
+      </Route>
       <Route path = "/home" element = {<Home/>}>
       </Route>
       <Route path = "/login" element = {<Auth/>}></Route>

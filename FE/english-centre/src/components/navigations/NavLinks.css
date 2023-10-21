@@ -1,0 +1,12 @@
+.nav-links {
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+#links-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+    user-select: none;
+}
