@@ -1,20 +1,38 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import Card from 'react-bootstrap/Card'
 import Navbar from 'react-bootstrap/Navbar';
 import NavLinks from './NavLinks'
 import SideDrawer from './SideDrawer'
 import './MainNavigation.css'
 import Button from '../FormElements/Button'
-import logo from '../../assets/high-five-logo.png'
+import logo from '../../assets/high-five-logo.png';
+import Backdrop from '../UIElements/Backdrop';
 
 const navItems = [{href : "/home" , title : "Trang chủ"}, {href : '/course', title : "Khoa hoc"}, {href : "/contact", title : "Lien he"}, {title : "Cong nghe" , href : '/tech'}]
 
+
+
 export default function MainNavigation(props) {
+    const [drawerIsOpen, setDrawerIsOpen] = useState(false);
+
+  const openDrawerHandler = () => {
+    setDrawerIsOpen(true);
+  };
+
+  const closeDrawerHandler = () => {
+    setDrawerIsOpen(false);
+  };
     return ( 
     <>
+    {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
+      <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
+        <nav className="main-navigation__drawer-nav">
+          <NavLinks flexDirection = 'column' items = {navItems} />
+        </nav>
+      </SideDrawer>
         <Navbar border = "light" id = "main-navigation">
         <div 
-        className='drop-down-button nav-item'
+        className='drop-down-button nav-item' onClick = {openDrawerHandler}
         >
             <span/>
             <span/>
