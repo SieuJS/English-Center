@@ -27,10 +27,10 @@ export default function MainNavigation(props) {
     {drawerIsOpen && <Backdrop onClick={closeDrawerHandler} />}
       <SideDrawer show={drawerIsOpen} onClick={closeDrawerHandler}>
         <nav className="main-navigation__drawer-nav">
-          <NavLinks flexDirection = 'column' items = {navItems} />
+          <NavLinks items = {navItems} />
         </nav>
       </SideDrawer>
-        <Navbar border = "light" id = "main-navigation">
+        <Navbar border = "light" id = "main-navigation" >
         <div 
         className='drop-down-button nav-item' onClick = {openDrawerHandler}
         >
