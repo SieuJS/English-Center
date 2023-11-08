@@ -2,8 +2,6 @@
 import * as React from 'react'
 import OwlCarousel from 'react-owl-carousel';
 import "./carousel.css"
-import "./button.css"
-import "../../assets/img/carousel-1.jpg"
 
 const carousel = (props) => {
     // const next = document.createElement('i');
