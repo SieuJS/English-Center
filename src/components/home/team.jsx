@@ -5,19 +5,23 @@ import { render } from 'react-dom'
 
 const Mems = [
     {
+        id : '01',
         name : "David",
         cert : "9.0 IELTS",
         img : "img/team-1.jpg"
     },
     {
+        id : '02',
         name : "Sarah",
         cert : "9.5 IELTS",
         img : "img/team-2.jpg"
     },{
+        id : '03',
         name : "John",
         cert : "8.0 IELTS",
         img : "img/team-3.jpg"
     },{
+        id : '04',
         name : "Linn",
         cert : "900 TOEIC",
         img : "img/team-4.jpg"
@@ -27,7 +31,7 @@ const Mems = [
 
 const renderMem = (mem) => {
    return (
-    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+    <div className="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" key={mem.id}>
         <div className="team-item bg-light">
             <div className="overflow-hidden">
                 <img className="img-fluid" src={mem.img} alt="" />
