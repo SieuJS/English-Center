@@ -1,5 +1,13 @@
 import * as React from 'react'
 import './service.css'
+
+const SERVICES_ = [
+    {
+        
+    }
+]
+
+
 export default function Service (props) {
     return (
         <div className="container-xxl py-5">

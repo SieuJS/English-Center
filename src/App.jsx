@@ -12,6 +12,7 @@ import Courses from './components/home/courses'
 import Team from './components/home/team'
 import Testimonial from './components/home/testimonial'
 import Footer from './components/shares/footer'
+
 function App() {
   return (
   <>
@@ -24,6 +25,7 @@ function App() {
   <Courses/>
   <Team/>
   <Testimonial/>
+
   <Footer/>
   </>
   )
