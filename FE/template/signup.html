@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    <link rel="stylesheet" href="./signup.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="main">
+        
+        <form action="./signin.html" method="POST" class="form" id="register-form">
+            <h1 class="heading">Đăng kí</h1>
+            <p class="desc">Học Tiếng Anh tại HighFiveEnglish </p>
+            
+            <div class="spacer"></div>
+
+            <div class="btn-group">
+                <button type="button" disabled class="form-teacher button-click">Đăng kí là giáo viên</button>
+                <button type="button" class="form-student">Đăng kí là học viên</button>
+            </div>
+
+            <div class="form-group" id="access-code-form">
+                <label for="access-code" class="form-label">Mã kích hoạt</label>
+                <input id="access-code" name="access-code" rules="required|access-code" type="text" placeholder="Mã kích hoạt. VD: 123456" class="form-control">
+                <span class="form-message"></span>
+
+                <div class="form-message invalid" id="alert access-code" style="display: none">
+                    <div class="form-alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Mã kích hoạt không hợp lệ
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email</label>
+                <input id="email" name="email" type="text" placeholder="VD: email@domain.com" class="form-control">
+                <span class="form-message"></span>
+
+                <div class="form-message" id="alert email" style="display: none">
+                    <div class="form-alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Email không hợp lệ
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="form-label">Tên đăng kí</label>
+                <input id="username" name="username" type="text" placeholder="Tên đăng kí" class="form-control">
+                <span class="form-message"></span>
+
+                <div class="form-message" id="alert username" style="display: none">
+                    <div class="form-alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Tên của bạn phải dài hơn 4 kí tự
+                    </div>
+                </div>
+            </div>
+        
+            <div class="form-group">
+                <label for="password" class="form-label">Mật khẩu</label>
+                <input id="password" name="password" type="password" placeholder="Nhập mật khẩu" class="form-control">
+                <span class="form-message"></span>
+
+                <div class="form-message" id="alert password" style="display: none">
+                    <div class="form-alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Mật khẩu phải chứa ít nhất 6 kí tự
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword" class="form-label">Xác nhận mật khẩu</label>
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Xác nhận mật khẩu" class="form-control">
+                <span class="form-message"></span>
+                
+                <div class="form-message" id="alert confirmPassword" style="display: none">
+                    <div class="form-alert">
+                        <span class="glyphicon glyphicon-alert"></span>
+                        Các mật khẩu đã nhập không khớp. Hãy thử lại.
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="form-message">
+                    <input id="policyCheckbox" name="policy" type="checkbox"> Bạn đồng ý với quy định, điều khoản sử dụng và chính sách bảo mật của HighFiveEnglish
+                </div>
+                <span class="form-message"></span>
+            </div>
+            
+            <div class="form-group">
+                <div>
+                    <span>Bạn đã có tài khoản? </span>
+                    <a href="./signin.html">Đăng nhập</a>  
+                </div>
+            </div>
+
+            <button type="submit" disabled class="form-submit" id="submitButton">Đăng kí</button>          
+        </form>
+      
+      </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="./validator_signup.js"></script>
+    <script src="./roleRegister.js"></script>
+    <script src="./policyCheckbox.js"></script>
+</body>
+</html>
