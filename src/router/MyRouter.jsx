@@ -1,6 +1,5 @@
-import Home from "../../../src/pages/home";
 const routes = [
-    {path : "/", view : () => (1)}
+    {path : "/", view : () => Home()}
 ]
 
 const navigateTo = url => {
@@ -34,3 +33,15 @@ document.addEventListener('DOMContentLoaded',  () => {
     })
 });
 
+export function MyRouters (props) {
+    props.children.forEach(page => {
+        let p = {
+            path : page.path,
+
+        }
+    })
+}
+
+export function MyRoute (props)  {
+    let p 
+}
