@@ -1,7 +1,16 @@
 import * as React from 'react'
 import './categories.css'
 
+
+let DUMB_COURSE = [{
+    title : "Web Design & Development Course for Beginners",
+    
+}]
+
 export default function Courses ( props){
+
+
+
     return (
     <div className="container-xxl py-5">
         <div className="container">

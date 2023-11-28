@@ -1,20 +1,21 @@
 import * as React from 'react'
 import Dropdown from 'react-bootstrap/Dropdown';
+import {Link, NavLink} from 'react-router-dom';
 import './navigation.css'
 const Navigation = (props) => {
     
     return (<nav className={"navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0 " + props.className || ""}>
-        <a href='/' className="navbar-brand d-flex align-items-center px-4 px-lg-5" data-link = "true">
+        <Link href='/' className="navbar-brand d-flex align-items-center px-4 px-lg-5" data-link = "true">
             <h2 className='m-0 text-primary'><i className='fa fa-book me-3'></i>HIGH FIVE ENGLISH</h2>
-        </a>
+        </Link>
         <button type='button' className='navbar-toggler me-4' data-bs-toggle="collapse" data-bs-target="#navbarCollapse" >
         <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarCollapse">
             <div className="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="/home" className="nav-item nav-link active" data-link>Home</a>
-                <a href="about.html" className="nav-item nav-link">About</a>
-                <a href="courses.html" className="nav-item nav-link">Courses</a>
+                <NavLink href="/home" className="nav-item nav-link active" data-link>Home</NavLink>
+                <NavLink href="/about" className="nav-item nav-link">About</NavLink>
+                <NavLink href="/courses" className="nav-item nav-link">Courses</NavLink>
                 <div className="nav-item dropdown">
                     <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown" data-link>Pages</a>
                     <div className="dropdown-menu fade-down m-0">

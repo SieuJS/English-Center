@@ -1,6 +1,33 @@
 import *  as React from 'react'
 import './categories.css'
+
+const DATA = [
+    {
+        title : "Business English",
+        image : "img/cat-1.jpg"
+    },
+    {
+        title : "TOEIC Prep",
+        image : "img/cat-2.jpg"
+    },
+    {
+        title : "IELTS Prep",
+        image : "img/cat-3.jpg"
+    },
+    {
+        title : "Academic English",
+        image : "img/cat-4.jpg"
+    }
+]
+
+function renderCat (cat) {
+
+}
+
 export default function Categories (props)  {
+
+
+
     return (
         <div className="container-xxl py-5 category">
         <div className="container">
