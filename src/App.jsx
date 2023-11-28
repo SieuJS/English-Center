@@ -4,6 +4,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Home from './pages/home/home'
+import Courses from './pages/home/courses'
 // import SignIn from './pages/signin'
 function App() {
 
@@ -14,8 +15,11 @@ function App() {
   <Routes>
     <Route path='/' element ={<Home/>}>
     {/* <Route path = '/signin' element = {<SignIn/>}/> */}
-      <Route path = '/home' element = {<Home/>}/>
+      
+      <Route path = 'home' element = {<Home/>}/>
     </Route>
+    <Route path = 'courses' element = {<Courses/>} />
+    
   </Routes>
   </>
   )
