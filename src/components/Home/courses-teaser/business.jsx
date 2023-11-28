@@ -1,6 +1,6 @@
 import React from 'react'
 import '../categories.css'
-import OwlCarousel from 'react-owl-carousel'
+import ReactOwlCarousel from 'react-owl-carousel'
 import "../testimonial.css"
 function business() {
   return (
@@ -10,11 +10,11 @@ function business() {
                 <h6 className="section-title bg-white text-center text-primary px-3">Courses</h6>
                 <h1 className="mb-5">Business English</h1>
             </div>
-            <OwlCarousel className="testimonial-carousel position-relative" items={3} center = {true} loop = {true}>
+            <ReactOwlCarousel className="testimonial-carousel position-relative" items={2} center = {true} loop = {true} margin={20}>
 
                 <div className="testimonial-item text-center item">
                     <div className="position-relative overflow-hidden">
-                        <img className="img-fluid" src="img/SpecializedFields.jpg" alt=""/>
+                        <img className="img-fluid" src="img/specialize-field.jpg" alt=""/>
                         <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <a href="#" className="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style={{borderRadius : "30px 0 0 30px"} }>Read More</a>
                             <a href="#" className="flex-shrink-0 btn btn-sm btn-primary px-3" style={{borderRadius: "0px 30px 30px 0px"}}>Join Now</a>
@@ -40,7 +40,7 @@ function business() {
                 </div>
                 <div className="testimonial-item text-center item">
                     <div className="position-relative overflow-hidden">
-                        <img className="img-fluid" src="img/Commercial.jpg" alt=""/>
+                        <img className="img-fluid" src="img/commercial.jpg" alt=""/>
                         <div className="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
                             <a href="#" className="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style={{borderRadius : "30px 0 0 30px"} }>Read More</a>
                             <a href="#" className="flex-shrink-0 btn btn-sm btn-primary px-3" style={{borderRadius: "0px 30px 30px 0px"}}>Join Now</a>
@@ -65,7 +65,7 @@ function business() {
                     </div>
                 </div>
                 
-            </OwlCarousel>
+            </ReactOwlCarousel>
         </div>
     </div>
   )

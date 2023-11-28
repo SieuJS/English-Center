@@ -48,7 +48,7 @@ export default function Categories (props)  {
                             </a>
                         </div>
                         <div className="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a className="position-relative d-block overflow-hidden" href={props.scrolls ? "#toeic-prep": "" }>
+                            <a className="position-relative d-block overflow-hidden" href={props.scrolls ? "#toeic": "" }>
                                 <img className="img-fluid" src="img/cat-2.jpg" alt=""/>
                                 <div className="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style={{margin: "1px"}}>
                                     <h5 className="m-0">TOEIC Prep</h5>

@@ -7,11 +7,13 @@ import Navigation from '../../components/shared/navigation/navigation'
 import CoursesHeader from '../../components/Home/courses-teaser/courese-header'
 import Categories from '../../components/Home/categories'
 import Business from '../../components/Home/courses-teaser/business'
+import Toeic from '../../components/Home/courses-teaser/toeic'
+import Ielts from '../../components/Home/courses-teaser/ielts'
 const courses = () => {
     const [loading,setLoading] = useState(true);
 
     useEffect( ()=> {
-        setTimeout(()=>{setLoading(false);}, 2000);
+        setTimeout(()=>{setLoading(false);}, 500);
     },[])
 
     return (
@@ -22,6 +24,8 @@ const courses = () => {
             <CoursesHeader/>
             <Categories scrolls = {true}/>
             <Business/>
+            <Toeic/>
+            <Ielts/>
             <Footer></Footer>
         </>
         }
