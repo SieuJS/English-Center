@@ -6,7 +6,7 @@ function ielts() {
     <div
       className="container-xxl py-5 wow fadeInUp"
       data-wow-delay="0.1s"
-      id="toeic"
+      id="ielts"
     >
       <div className="container">
         <div className="text-center">

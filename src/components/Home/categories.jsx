@@ -57,7 +57,7 @@ export default function Categories (props)  {
                             </a>
                         </div>
                         <div className="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a className="position-relative d-block overflow-hidden" href={props.scrolls ? "#ielts-prep": "" }>
+                            <a className="position-relative d-block overflow-hidden" href={props.scrolls ? "#ielts": "" }>
                                 <img className="img-fluid" src="img/cat-3.jpg" alt=""/>
                                 <div className="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3"style={{margin: "1px"}}>
                                     <h5 className="m-0">IELTS Preps</h5>
@@ -68,7 +68,7 @@ export default function Categories (props)  {
                     </div>
                 </div>
                 <div className="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style={{minHeight: "350px"}}>
-                    <a className="position-relative d-block h-100 overflow-hidden" href={props.scrolls ? "#standar-english": "" }>
+                    <a className="position-relative d-block h-100 overflow-hidden" href={props.scrolls ? "#standar": "" }>
                         <img className="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt="" style={{objectFit: 'cover'}}/>
                         <div className="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style={{margin: "1px"}}>
                             <h5 className="m-0">Standard English</h5>

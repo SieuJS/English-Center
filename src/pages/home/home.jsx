@@ -10,6 +10,7 @@ import Team from '../../components/Home/team'
 import Testimonial from '../../components/Home/testimonial'
 import Footer from '../../components/shared/footer/footer'
 import { flushSync } from 'react-dom'
+import ToTopBtn from '../../components/shared/navigation/to-top-btn'
 
 export default function Home (props) {
     
@@ -24,6 +25,7 @@ export default function Home (props) {
         <>
         {loading ?  <SpinnerStart/> :
         <>
+            <ToTopBtn/>
             <Navigation/>
             <Carousel/>
             <Service/>
