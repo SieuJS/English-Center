@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { Element, scroller } from 'react-scroll'
 
 import SpinnerStart from '../../components/shared/spinner/spinner-start'
 import Footer from '../../components/shared/footer/footer'
@@ -26,10 +27,10 @@ const courses = () => {
             <Navigation/>
             <CoursesHeader/>
             <Categories scrolls = {true}/>
-            <Business/>
-            <Toeic/>
-            <Ielts/>
-            <StandardEnglish/>
+            <Element name = "business"></Element><Business/>
+            <Element name = "toeic"></Element><Toeic/>
+            <Element name = "ielts"></Element><Ielts/>
+            <Element name = "standard"></Element><StandardEnglish/>
             <Footer></Footer>
         </>
         }
