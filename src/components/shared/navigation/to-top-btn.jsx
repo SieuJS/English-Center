@@ -9,6 +9,7 @@ function ToTopBtn(props) {
 
     const [toTop, setToTop] = useState(false);
 
+
     //set up sroll : 
 
     useEffect (()=> {
@@ -26,10 +27,10 @@ function ToTopBtn(props) {
         }
     }, [])
 
+
     const scrollUp = () => {
-        let speed =  1 ; 
         let options = {
-            duration : speed * window.scrollY,
+            duration : 1000,
             smooth : 'easeInOutQuint'
         }
         animateScroll.scrollToTop(options);
