@@ -6,12 +6,10 @@ import './to-top-btn.css'
 
 
 function ToTopBtn(props) {
+
     const [toTop, setToTop] = useState(false);
 
-    const options = {
-        duration : 500,
-        smooth : true,
-    };
+    //set up sroll : 
 
     useEffect (()=> {
         const handleScroll = () => {
@@ -28,10 +26,19 @@ function ToTopBtn(props) {
         }
     }, [])
 
+    const scrollUp = () => {
+        let speed =  1 ; 
+        let options = {
+            duration : speed * window.scrollY,
+            smooth : 'easeInOutQuint'
+        }
+        animateScroll.scrollToTop(options);
+    }
+
 
   return (
     
-    <Link to = {props.scrollTo ? props.scrollTo : "#"} smooth = {true} offset={200} duration={500}  className="btn btn-lg btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up btn btn-lg btn-primary btn-lg-square" ></i></Link>
+    <a className="btn btn-lg btn-primary btn-lg-square back-to-top"><i className="bi bi-arrow-up btn btn-lg btn-primary btn-lg-square" onClick={ scrollUp}></i></a>
   )
 }
 
