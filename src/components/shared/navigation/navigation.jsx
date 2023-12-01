@@ -26,7 +26,7 @@ const Navigation = (props) => {
                 </div>
                 <a href="contact.html" className="nav-item nav-link" data-link>Contact</a>
             </div>
-            <a href="" className="btn btn-primary py-4 px-lg-3 d-none d-lg-block">Join Now<i className="fa fa-arrow-right ms-3"></i></a>
+            <Link to = "/signin" className="btn btn-primary py-4 px-lg-3 d-none d-lg-block">Join Now<i className="fa fa-arrow-right ms-3"></i></Link>
         </div>
     </nav>)
 }

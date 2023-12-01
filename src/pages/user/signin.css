@@ -1,0 +1,54 @@
+#form-container {
+    height: 100vh;
+    width: 100%;
+    background-image: url("/img/about.jpg");
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size : cover;
+}
+
+.signin-form {
+    position: relative;
+    list-style: none;
+    margin: 0 auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+    border-radius: 6px;
+    background: white;
+
+}
+
+
+.signin-form .form-heading {
+    text-align: center;
+}
+
+.signin-form .form-heading h3 {
+    font-size: 2rem;
+}
+.signin-form .form-heading p {
+    color: #636d77;
+    font-size: 1.6rem;
+    font-weight: lighter;
+    line-height: 2.4rem;
+    margin-top: 16px;
+    font-weight: 300;
+}
+
+
+.signin-form .btn-submit {
+    outline: none;
+    background-color: #1dbfaf;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 50%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}

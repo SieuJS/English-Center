@@ -4,9 +4,23 @@
     transition: .5s;
 }
 
-.btn.btn-primary,
-.btn.btn-secondary {
+.btn.btn--primary,
+.btn.btn--secondary {
     color: #FFFFFF;
+}
+
+.btn.btn--primary{
+    outline: none;
+    background-color: #1dbfaf;
+    margin-top: 12px;
+    padding: 12px 16px;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    width: 50%;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
 }
 
 .btn-square {
@@ -33,4 +47,15 @@
     justify-content: center;
     font-weight: normal;
     border-radius: 0px;
+}
+
+/* Disable button  */
+
+.btn:disabled,
+.btn:hover:disabled,
+.btn:active:disabled {
+  background: #ccc;
+  color: #979797;
+  border-color: #ccc;
+  cursor: not-allowed;
 }
