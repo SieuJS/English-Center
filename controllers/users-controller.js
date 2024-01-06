@@ -1,6 +1,6 @@
-const AdminRepo = require('../repositories/admin-repo');
-const TutorRepo = require('../repositories/tutor-repo');
-const StudentRepo = require('../repositories/student-repo');
+const bcrypt = require("bcrypt");
+const Student = require("../models/Student.m");
+const Tutor = require("../models/Tutor.m");
 
 const HttpError = require('../models/http-error');
 const {validationResult} = require('express-validator');
@@ -15,33 +15,38 @@ const createUser = async (req,res, next) =>{
     if(!errors.isEmpty()){
        return next (new HttpError('Your input is not valid' , 422))
     }
-    const {email, password, username, isStudent} = req.body;
-    const User = isStudent === "true" ? StudentRepo : TutorRepo;
-    const existUser = await User.getOneBy({email})
+    const {email, password, name, isStudent} = req.body;
+    const User = isStudent === "true" ? Student : Tutor;
+
+    const existUser = await User.findOne({email: email});
     if(existUser) {
         return next( new HttpError('Email in use'), 404);
     }
-    const newUser = await User.create({
+    const newUser = {
         email, 
-        password,
-        username
-    })
-    req.session.userId = newUSer.id;
-    res.status(201).json(newUser)
+        password: await bcrypt.hash(password, 4),
+        name
+    };
+    const signUpResult = await User.create(newUser);
+    req.session.userId = signUpResult._id.toString();
+    res.status(201).json(signUpResult)
 }
 
 const signInHandler = async (req,res,next)=>{
     const {email, password} = req.body;
-    const USERS = extractRole(email) === "student" ? StudentRepo : TutorRepo;
-    const identifierUser = await USERS.getOneBy({email});
+    const User = extractRole(email) === "student" ? Student : Tutor;
+    const identifierUser = await User.findOne({email: email});
 
     if(!identifierUser) {
         return next (new HttpError('Wrong email'))
     }
-    if( !USERS.comparePassword(identifierUser.password,password)){
+
+    const match = await bcrypt.compare(password, identifierUser.password);
+    if(!match){
         return next( new HttpError('Wrong password'))
     }
-    req.session.userId = newUser.id;
+
+    req.session.userId = identifierUser._id.toString();
     res.status(200).json({message : "Login sucessfully"});
 }
 exports.createUser = createUser;

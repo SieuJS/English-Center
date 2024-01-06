@@ -1,0 +1,1 @@
+mongodb+srv://hfadmin:admin123@cluster0.z4pgyu9.mongodb.net/?retryWrites=true&w=majority

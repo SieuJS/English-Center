@@ -5,7 +5,7 @@ const router = express.Router();
 const { createAdmin, signInHandler} = require('../../controllers/admin-controller')
 
 router.post('/signup',[
-    check('username').not().isEmpty(),
+    check('name').not().isEmpty(),
     check('email').normalizeEmail().isEmail(),
     check('password').isLength({min: 6})
 ], createAdmin);

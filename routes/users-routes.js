@@ -8,7 +8,7 @@ const { createUser, signInHandler} = require('../controllers/users-controller')
 router.get('/signup', [
 ])
 router.post('/signup',[
-    check('username').not().isEmpty(),
+    check('name').not().isEmpty(),
     check('email').normalizeEmail().isEmail(),
     check('password').isLength({min: 6})
 ], createUser);
