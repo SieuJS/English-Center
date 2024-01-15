@@ -1,0 +1,46 @@
+.course-container {
+    display: flex;
+    flex-direction: column;
+    height: 400px;
+    width: 200vw;
+    background-color: #eeeeee;
+    padding: 15px;
+    padding-left: 25px;
+    
+}
+
+.course-scroll{
+    height: 300px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.course-material {
+    display: flex;
+    flex-direction: column;
+}
+
+.course-task {
+    display: flex;
+    flex-direction: column;
+}
+
+.g-3{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .col-lg-4{
+    display: flex;
+  }
+
+
+  a{
+    font-size: 25px ;
+    color: black;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: black
+  }
