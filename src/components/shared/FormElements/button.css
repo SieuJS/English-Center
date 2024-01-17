@@ -5,8 +5,9 @@
 }
 
 .btn.btn--primary,
-.btn.btn--secondary {
+.btn.btn--inverse {
     color: #FFFFFF;
+    background-color: #1ddcc9;
 }
 
 .btn.btn--primary{

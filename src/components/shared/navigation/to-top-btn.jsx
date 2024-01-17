@@ -13,7 +13,6 @@ function ToTopBtn(props) {
     //set up sroll : 
 
     useEffect (()=> {
-        console.log(toTop)
         if (window.scrollY >= 200) {
             setToTop(true);
         }else{
