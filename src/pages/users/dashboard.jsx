@@ -1,9 +1,9 @@
 import React from 'react'
-
+import DashBoard from '../../components/shared/navigation/DashBoard'
 function dashboard() {
   return (
     
-    <div>dashboard</div>
+    <DashBoard/>
   )
 }
 

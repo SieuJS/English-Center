@@ -1,18 +1,8 @@
 import React from 'react'
-
+import DashBoard from '../../components/shared/navigation/DashBoard'
 function dashboard() {
   return (
-    <div className="container">
-        <nav>
-            <ul>
-                <li>
-                    <a href="" className="logo"><img src="" alt="" />
-                        <span className="nav-item"></span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <DashBoard/>
   )
 }
 
