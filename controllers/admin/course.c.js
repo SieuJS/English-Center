@@ -1,9 +1,11 @@
+const mongoose = require("mongoose");
 const courseModel = require("../../models/Course.m.js");
+const studentModel = require("../..//models/Student.m.js");
 
 module.exports = {
     create: async (req, res) => {
-        const {name, shortDes, fullDes, price, dateStart, dateEnd} = req.body;
-        
+        const { name, shortDes, fullDes, price, dateStart, dateEnd } = req.body;
+
         const newCourse = {
             name,
             shortDes,
@@ -22,21 +24,24 @@ module.exports = {
     },
 
     addStudent: async (req, res) => {
-        const {courseId, studentId} = req.body;
-        courseModel.findOne({_id: courseId}, (err, course) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-
-            course.students.push(studentId);
-            course.save((err) => {
-                if (err) {
-                    console.log(err);
-                    return;
-                }
-                console.log(`Add new student to course ${courseId}`);
-            });
-        });
+        const { courseIdStr, studentIdStr } = req.body;
+        const student = await studentModel.findById(studentIdStr);
+        if (!student) {
+            console.log(`Student with id '${studentIdStr} does not exist'`);
+            // call next() to handle the error
+            return;
+        }
+        courseModel.findOne({ "_id": courseIdStr })
+            .then((course) => {
+                course.students.push(studentIdStr);
+                course.save();
+                res.json({
+                    message: `Student ${studentIdStr} has been added to course ${courseIdStr}`,
+                    course_name: course.name
+                })
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 }
