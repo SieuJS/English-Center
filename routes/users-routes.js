@@ -9,7 +9,7 @@ router.get('/signup', [
 ])
 router.post('/signup',[
     check('name').not().isEmpty(),
-    check('email').normalizeEmail().isEmail(),
+    check('username').not().isEmpty(),
     check('password').isLength({min: 6})
 ], createUser);
 router.post('/signin',[

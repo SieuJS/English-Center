@@ -17,14 +17,15 @@ const extractRole = (email) => {
 const createUser = async (req,res, next) =>{
     const errors = validationResult(req);
     if(!errors.isEmpty()){
-       return next (new HttpError('Your input is not valid' , 422))
+        console.log(errors)
+       return next (new HttpError('Your input is not valid', 422))
     }
-    const {email, password, name, isStudent} = req.body;
-    const User = isStudent === "true" ? Student : Tutor;
-
+    const {username, password, name, role} = req.body;
+    const User = role === "student" ? Student : Tutor;
+    const email = `${username}@${role}.highfive.com`
     const existUser = await User.findOne({email: email});
     if(existUser) {
-        return next( new HttpError('Email in use'), 404);
+        return next( new HttpError('Username in use'), 404);
     }
     const newUser = {
         email, 
@@ -34,24 +35,35 @@ const createUser = async (req,res, next) =>{
     let signUpResult
     try {
         signUpResult = await User.create(newUser);
+        console.log(signUpResult)
     }
     catch (err) {
         return next (new HttpError ('Can not sign up', 500));
     }
-    
+    let token
     try {
-        jwt.sign(
+        token = jwt.sign(
             {
-                userId : newUser.id,
+                userId : signUpResult.id,
                 email : newUser.email,
-                role 
-            }
+            },
+            process.env.JWT_KEY,
+            {expiresIn : "1h"}
         )
     }catch (err) {
-        return next (new HttpError ('Can not sign up', 500));
+        console.log(err)
+        return next (new HttpError ('Can not sign up sign jwt', 500));
     }
-    
-    res.status(201).json(signUpResult)
+
+    res.status(201).json(
+        {
+            message : "Sign up sucess",
+            user : {
+                userId : signUpResult.id, 
+                email : signUpResult.email,
+                token , 
+                role
+            }})
 }
 
 const signInHandler = async (req,res,next)=>{
@@ -59,7 +71,6 @@ const signInHandler = async (req,res,next)=>{
     const role = extractRole(email);
     const User = role === "student" ? Student : Tutor;
     const identifierUser = await User.findOne({email: email});
-
     if(!identifierUser) {
         return next (new HttpError('Wrong email',420))
     }
@@ -68,13 +79,12 @@ const signInHandler = async (req,res,next)=>{
     if(!match){
         return next( new HttpError('Wrong password', 420))
     }
-
+    let token
     try {
-        jwt.sign(
+        token = jwt.sign(
             {
                 userId : identifierUser.id,
                 email : identifierUser.email,
-                role 
             },
             process.env.JWT_KEY,
             {expiresIn : "1h"}
@@ -87,11 +97,10 @@ const signInHandler = async (req,res,next)=>{
     req.session.userId = identifierUser._id.toString();
     res.status(200).json(
         {
-            message : "Login sucessfully" ,  
-            user : {
-                ...identifierUser ,
-                role : extractRole(email)
-            }
+            userId: identifierUser.id ,
+            email : identifierUser.email,
+            token : token, 
+            role 
     });
 }
 exports.createUser = createUser;
