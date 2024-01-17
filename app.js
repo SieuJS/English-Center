@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const session = require("express-session");
 const userRoutes = require('./routes/users-routes')
-const adminRoutes = require('./routes/admins/admin')
+const adminRoutes = require('./routes/admins/admin.r')
 const HttpError = require('./models/http-error');
 const mongoose = require("mongoose");
 const port = 5000;
@@ -11,18 +11,11 @@ app.use(session({
     secret: 'HighFiveSessionSecret',
     resave: false,
     saveUninitialized: false,
-  }));
+}));
+
 app.use(bodyParser.json());
 
-app.use ((rep,res,next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept, Authorization');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, DELETE');
-    next();
-})
-
-app.use('/api/user', userRoutes)
+app.use('/api/users', userRoutes)
 app.use('/api/admin', adminRoutes);
 app.use((error, req, res, next) => {
     // Check that Have the res been sent ?
