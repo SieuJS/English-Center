@@ -3,6 +3,7 @@ import {useRef, useState, useEffect, useCallback} from 'react'
 export default function AuthHook() {
     const [token, setToken] = useState(null);
     const [userId, setUserId] = useState();
+    const [role, setRole] = useState();
     const [deadlineToken, setDeadlineToken] = useState();
   
   
@@ -14,18 +15,19 @@ export default function AuthHook() {
         return ;
       }
       else {
-        login(userData.userId, userData.token, userData.expiredDateToken);
+        login(userData.userId, userData.token, userDate.role, userData.expiredDateToken);
       }
     } , []);
   
-    const login = useCallback((userId, token, expiredDateToken) => {
+    const login = useCallback((userId, token, role ,expiredDateToken) => {
   
       setToken(token);
       setUserId(userId);
+      setRole(role)
       const userData = {
         userId ,
         token,
-  
+        role
       }
   
     
@@ -52,5 +54,5 @@ export default function AuthHook() {
         clearTimeout(tokenTimeRef);
       }
     }, [token, logout])
-  return {login, logout, token, userId};
+  return {login, logout, token, userId, role};
 }

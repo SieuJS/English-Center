@@ -14,28 +14,27 @@ import {AuthContext} from './shared/context/auth-context';
 import AuthHook from './hooks/auth-hook'
 function App() {
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const {login , logout, token, userId} = AuthHook();
+
+  const {login , logout, token, userId, role} = AuthHook();
 
 
   let routes ;
 
-  
-
-  if(isLoggedIn) {
+  if(token) {
     routes = (
       <Route path = "/dashboard" element = {<DashBoard/>}/>
     )
   }
 
-  if (!isLoggedIn) {
+  if (!token) {
 
   }
 
   return (
   <>
-  <AuthContext.Provider value = {{isLoggedIn, login, logout, userId}}>
+  <AuthContext.Provider value = {
+    {isLoggedIn : !!token, login, logout, userId, token, role}}>
   <Routes>
     <Route path = '/courses' element = {<Courses/>} />
     <Route path = '/signin' element = {<SignIn/>}/>
