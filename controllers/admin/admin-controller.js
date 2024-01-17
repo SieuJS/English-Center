@@ -1,7 +1,7 @@
 const { validationResult } = require('express-validator');
-const HttpError = require('../models/http-error');
+const HttpError = require('../../models/http-error.js');
 const bcrypt = require("bcrypt");
-const Admin = require("../models/Admin.m.js");
+const Admin = require("../../models/Admin.m.js");
 const secretKey = "123AD23";
 
 const createAdmin = async (req, res, next) => {
