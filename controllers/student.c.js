@@ -89,20 +89,5 @@ module.exports = {
             .catch(err => {
                 next(new HttpError("Can not get course for specific student"), 440);
             })
-    },
-    getAssignments: async (req, res, next) => {
-        const {courseId} = req.body;
-        const course = await courseModel.findById(courseId);
-        if (!course) {
-            next (new HttpError("Can not get assignments for the course. Invalid course id", 440));
-            return;
-        }
-        courseModel.findOne({"_id": courseId})
-            .then(result => {
-                total: result.assignments.length,
-                res.json({
-                    assignments: result.assignments
-                })
-            })
     }
 }

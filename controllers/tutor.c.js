@@ -26,5 +26,20 @@ module.exports = {
         res.status(201).json({
             newAssignment
         })
+    },
+    deleteAssignment: async (req, res, next) => {
+        const {courseId, assignmentId} = req.body;
+        const course = await courseModel.findById(courseId);
+        if (!course) {
+            next (new HttpError("Cannot delete assignment. Invalid course id", 440));
+            return;
+        }
+        course.assignments = course.assignments.filter(a_ID => a_ID != assignmentId);
+        course.save();
+        const result = await AssignmentModel.deleteOne({"_id": assignmentId});
+        res.json({
+            delete: "Done",
+            result
+        })
     }
 }
