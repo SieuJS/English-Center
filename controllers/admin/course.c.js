@@ -1,7 +1,7 @@
 const courseModel = require("../../models/Course.m.js");
 const studentModel = require("../../models/Student.m.js");
 const tutorModel = require("../../models/Tutor.m.js");
-const HttpError = require("../../models//http-error.js");
+const HttpError = require("../../models/http-error.js");
 
 module.exports = {
     create: async (req, res, next) => {
@@ -56,6 +56,10 @@ module.exports = {
 
                 course.students.push(studentId);
                 course.save();
+
+                // we need to reference the course from student
+                student.courses.push(courseId);
+                student.save();
                 res.json({
                     message: `Student ${studentId} has been added to course ${courseId}`,
                     course_name: course.name
@@ -86,7 +90,7 @@ module.exports = {
                 })
 
                 if (existed) {
-                    next(new HttpError("Cannot add. The tutor has been existed in the course"), 430);
+                    next(new HttpError("Cannot add. The tutor has been existed in the course", 430));
                     return;
                 }
 
@@ -122,6 +126,9 @@ module.exports = {
                 }
                 course.students = course.students.filter(student_ID => student_ID != studentId);
                 course.save();
+
+                student.courses = student.courses.filter(course_ID => course_ID != courseId);
+                student.save();
                 //console.log("course delete student", course);
                 res.status(200).json({
                     message: "Detele student from the course successfully"
@@ -146,7 +153,7 @@ module.exports = {
                     next(new HttpError("Cannot delete tutor from course. Invalid course", 430));
                     return;
                 }
-                if(!course.students.includes(tutor)) {
+                if(!course.tutors.includes(tutorId)) {
                     next(new HttpError("The tutor has not already been in the course", 430));
                     return;
                 }

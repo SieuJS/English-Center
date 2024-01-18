@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const session = require("express-session");
-const userRoutes = require('./routes/users-routes')
-const adminRoutes = require('./routes/admins/admin.r')
+const userRoutes = require('./routes/users-routes');
+const adminRoutes = require('./routes/admins/admin.r');
+const coursesRoute = require("./routes/courses.r.js");
+const studentRoute = require("./routes/student.r.js");
 const HttpError = require('./models/http-error');
 const mongoose = require("mongoose");
 const port = 5000;
@@ -23,8 +25,10 @@ app.use ((rep,res,next) => {
     next();
 })
 
-app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
+app.use('/api/courses', coursesRoute);
+app.use('/api/student', studentRoute);
 app.use((error, req, res, next) => {
     // Check that Have the res been sent ?
     if (req.headerSent) {
