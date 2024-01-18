@@ -5,6 +5,7 @@ const userRoutes = require('./routes/users-routes');
 const adminRoutes = require('./routes/admins/admin.r');
 const coursesRoute = require("./routes/courses.r.js");
 const studentRoute = require("./routes/student.r.js");
+const tutorRoute = require("./routes/tutor.r.js");
 const HttpError = require('./models/http-error');
 const mongoose = require("mongoose");
 const port = 5000;
@@ -29,6 +30,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/courses', coursesRoute);
 app.use('/api/student', studentRoute);
+app.use('/api/tutor', tutorRoute);
 app.use((error, req, res, next) => {
     // Check that Have the res been sent ?
     if (req.headerSent) {
