@@ -1,6 +1,6 @@
 import React , {useState} from "react";
 import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 // icons
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -13,7 +13,7 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 
 //chart
 
-function DashBoard() {
+function DashBoard(props) {
     const [collapse, setCollapse] = useState(true)
 
 
@@ -22,8 +22,6 @@ function DashBoard() {
     }
 
   return (
-    <div id="app" style={({ height: "100vh" }, { display: "flex" })}>
-    
     <Sidebar 
     style={{ height: "100vh" }}
     collapsed = {collapse} 
@@ -35,22 +33,16 @@ function DashBoard() {
             style={{ textAlign: "center" }}
           >
             {" "}
-            <h2>Admin</h2>
+            <h2>{props.title || ""}</h2>
           </MenuItem>
           <MenuItem icon={<HomeOutlinedIcon />} >Home</MenuItem>
-          <MenuItem icon={<PeopleOutlinedIcon />}>Team</MenuItem>
-          <MenuItem icon={<ContactsOutlinedIcon />}>Contacts</MenuItem>
-          <MenuItem icon={<ReceiptOutlinedIcon />}>Profile</MenuItem>
-          <MenuItem icon={<HelpOutlineOutlinedIcon />}>FAQ</MenuItem>
-          <MenuItem icon={<CalendarTodayOutlinedIcon />}>Calendar</MenuItem>
+            {   props.NavLinks &&
+                props.navLinks.map( (item, index) => {
+                    return<MenuItem icon={item.icon} key = {index}>{item.label}</MenuItem>
+                })
+            }
         </Menu>
       </Sidebar>
-      <main>
-        <h1 style={{ color: "white", marginLeft: "5rem" }}>
-          Sigma Shop
-        </h1>
-      </main>
-      </div>
   );
 }
 

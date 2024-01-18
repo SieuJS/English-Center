@@ -1,4 +1,8 @@
 import { useState,useEffect } from 'react'
+import { useContext } from 'react'
+
+import { AuthContext } from '../../shared/context/auth-context'
+
 import Navigation from '../../components/shared/navigation/navigation'
 import SpinnerStart from '../../components/shared/spinner/spinner-start'
 import About from '../../components/Home/about'
@@ -9,11 +13,11 @@ import Service from '../../components/Home/service'
 import Team from '../../components/Home/team'
 import Testimonial from '../../components/Home/testimonial'
 import Footer from '../../components/shared/footer/footer'
-import { flushSync } from 'react-dom'
+import DashBoard from '../../components/shared/navigation/SideBar'
 import ToTopBtn from '../../components/shared/navigation/to-top-btn'
 
 export default function Home (props) {
-    
+    const auth = useContext(AuthContext);
     const [loading,setLoading] = useState(true);
 
     useEffect( ()=> {
@@ -22,11 +26,7 @@ export default function Home (props) {
     },[])
 
     return (
-        <>
-        {loading ?  <SpinnerStart/> :
-        <>
-            <ToTopBtn/>
-            <Navigation/>
+        <div id = "Home">
             <Carousel/>
             <Service/>
             <About/>
@@ -34,10 +34,7 @@ export default function Home (props) {
             <Courses/>
             <Team/>
             <Testimonial/>
-            <Footer></Footer>
-        </>
-        }
-        </>
+        </div>
     )
    
 }

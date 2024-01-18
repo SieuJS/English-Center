@@ -6,9 +6,11 @@ import Backdrop from "./Backdrop";
 import "./Modal.css";
 
 const ModalOverlay = (props) => {
+
+  console.log(props)
   const content = (
-    <div className={`modal ${props.className}`} style={props.style}>
-      <header className={`modal__header ${props.headerClass}`}>
+    <div className={`my-modal ${props.className}`} style={props.style}>
+      <header className={`my-modal__header ${props.headerClass}`}>
         <h2>{props.header}</h2>
       </header>
       <form
@@ -16,10 +18,10 @@ const ModalOverlay = (props) => {
           props.onSubmit ? props.onSubmit : (event) => event.preventDefault()
         }
       >
-        <div className={`modal__content ${props.contentClass}`}>
+        <div className={`my-modal__content ${props.contentClass}`}>
           {props.children}
         </div>
-        <footer className={`modal__footer ${props.footerClass}`}>
+        <footer className={`my-modal__footer ${props.footerClass}`}>
           {props.footer}
         </footer>
       </form>
@@ -37,7 +39,7 @@ const Modal = (props) => {
         mountOnEnter
         unmountOnExit
         timeout={200}
-        classNames="modal"
+        classNames="my-modal"
       >
         <ModalOverlay {...props} />
       </CSSTransition>

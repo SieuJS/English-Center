@@ -11,7 +11,7 @@ import Business from '../../components/Home/courses-teaser/business'
 import Toeic from '../../components/Home/courses-teaser/toeic'
 import Ielts from '../../components/Home/courses-teaser/ielts'
 import StandardEnglish from '../../components/Home/courses-teaser/standard-english'
-import ToTopBtn from '../../components/shared/navigation/to-top-btn'
+
 const courses = () => {
     const [loading,setLoading] = useState(true);
 
@@ -23,15 +23,12 @@ const courses = () => {
         <>
         {loading ?  <SpinnerStart/> :
         <>
-            <ToTopBtn/>
-            <Navigation/>
             <CoursesHeader/>
             <Categories scrolls = {true}/>
             <Element name = "business"></Element><Business/>
             <Element name = "toeic"></Element><Toeic/>
             <Element name = "ielts"></Element><Ielts/>
             <Element name = "standard"></Element><StandardEnglish/>
-            <Footer></Footer>
         </>
         }
         </>

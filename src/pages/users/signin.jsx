@@ -77,8 +77,7 @@ export default function SignIn (props) {
                     role: {
                         value : "",
                         isValid : false
-                    },
-                    email : undefined
+                    }
                 },
                 false
             );
@@ -230,8 +229,8 @@ export default function SignIn (props) {
             >Chuyển sang {isLoginMode? "đăng ký" : "đăng nhập"}
             </Button>  
         </div>
-        <div className="submit d-flex justify-content-center">
-        <Button type = "submit" disabled = {!formState.isValid} className='btn btn-submit' primary
+        <div className="submit d-flex justify-content-center mt-3">
+        <Button type = "submit" disabled = {!formState.isValid} primary 
         onClick = {authSubmitHandler}
         >
         {isLoginMode ? 'Đăng nhập' : 'Đăng ký'}

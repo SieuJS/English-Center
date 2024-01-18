@@ -15,7 +15,7 @@ export default function AuthHook() {
         return ;
       }
       else {
-        login(userData.userId, userData.token, userDate.role, userData.expiredDateToken);
+        login(userData.userId, userData.token, userData.role, userData.expiredDateToken);
       }
     } , []);
   
@@ -31,7 +31,7 @@ export default function AuthHook() {
       }
   
     
-      const deadline  = expiredDateToken || new Date(new Date().getTime() + 5*1000);
+      const deadline  = expiredDateToken || new Date(new Date().getTime() + 3600*1000);
       userData.expiredDateToken = deadline;
       setDeadlineToken(deadline );
       localStorage.setItem('userData', JSON.stringify(userData));
