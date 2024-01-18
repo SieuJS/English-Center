@@ -15,7 +15,7 @@ app.use(session({
 
 app.use(bodyParser.json());
 
-app.use ((rep,res,next) => {
+app.use ((req,res,next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Headers',
     'Origin, X-Requested-With, Content-Type, Accept, Authorization');
@@ -23,7 +23,7 @@ app.use ((rep,res,next) => {
     next();
 })
 
-app.use('/api/users', userRoutes)
+app.use('/api/user', userRoutes)
 app.use('/api/admin', adminRoutes);
 app.use((error, req, res, next) => {
     // Check that Have the res been sent ?
