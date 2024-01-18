@@ -220,6 +220,7 @@ body {
     position: relative;
     width: 1330px;
     height: 550px;
+    font-size: 24px;
     background: white;
     border-radius: 10px;
     border: 1px solid black;

@@ -31,7 +31,7 @@
     <div class="container-box">
       <div class="box">
         <div class="headerBody">Tutor Assessment</div>
-        <form method="POST">
+        <form id="form" method="POST" onsubmit="return validateForm()">
           <!-- Question 1 -->
           <div class="frame1">
             <div class="text" style="width: 520px; margin-left: 5px;">Question 1:</div>
@@ -136,6 +136,21 @@
 
         // Update the checkedIndex for the specific question
         checkedIndices[questionIndex] = (checkedIndices[questionIndex] === checkboxIndex) ? -1 : checkboxIndex;
+    }
+
+    function validateForm() {
+      var commentInput = document.getElementById("commentInput").value;
+      var trimmedComment = commentInput.trim();
+  
+      if (trimmedComment === "") {
+        alert("Please enter a comment before submitting.");
+        return false;
+      } else if (trimmedComment.split(/\s+/).length > 60) {
+        alert("Maximum 60 words allowed.");
+        return false;
+      }
+
+      return true
     }
   </script>
 </body>

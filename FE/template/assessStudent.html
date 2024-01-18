@@ -36,12 +36,13 @@
           <div class="text">Question 1:</div>
         </div>
         <div class="frame2">
-          <form method="POST">
-            <textarea id="commentInput" class="text-box" placeholder="Add comment here... (maximum 100 words)"></textarea>
-            <button type="submit" class="submit-button">
-              <div class="text" style="height:30px; font-size: 20px;">Submit</div>
-            </button>
-          </form>  
+          <form id="commentForm" method="POST" onsubmit="return validateForm()">
+              <textarea id="commentInput" class="text-box" placeholder="Add comment here... (maximum 100 words)"></textarea>
+              <div class="error-message" id="errorMessage"></div>
+              <button type="submit" class="submit-button">
+                  <div class="text" style="height:30px; font-size: 20px;">Submit</div>
+              </button>
+          </form>
         </div>
       </div>
     </div>
@@ -52,5 +53,23 @@
           </div>
       </div>
     </div>
+
+          
+  <script>
+    function validateForm() {
+      var commentInput = document.getElementById("commentInput").value;
+      var trimmedComment = commentInput.trim();
+  
+      if (trimmedComment === "") {
+        alert("Please enter a comment before submitting.");
+        return false;
+      } else if (trimmedComment.split(/\s+/).length > 100) {
+        alert("Maximum 100 words allowed.");
+        return false;
+      }
+      
+      return true
+    }
+  </script>
 </body>
 </html>
