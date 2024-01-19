@@ -16,7 +16,6 @@ module.exports = {
     },
     getCourseById: async (req, res, next) => {
         const courseId = req.params.courseId;
-        console.log("courseID params: ", courseId);
         courseModel.findById(courseId)
             .then(course => {
                 if (!course) {
@@ -24,7 +23,7 @@ module.exports = {
                         next(new HttpErrors("Invalid course id. Can not get specific course", 440));
                         return;
                     }
-                }
+                } 
                 res.json(course);
             })
     },
