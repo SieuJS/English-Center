@@ -11,6 +11,7 @@ import SignUp from './pages/users/signup'
 import SideBar from './components/shared/navigation/SideBar'
 import Navigation from './components/shared/navigation/navigation'
 import Footer from './components/shared/footer/footer'
+import DashBoardAdmin from './pages/admin/DashBoardAdmin'
 // import hooks
 import { AuthContext } from './shared/context/auth-context';
 import AuthHook from './hooks/auth-hook'
