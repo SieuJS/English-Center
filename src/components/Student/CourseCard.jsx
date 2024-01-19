@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 
 export default function CourseCard({ course }) {
-    const defaultCourseImage = "default-course.jpg";
+    const defaultCourseImage = "./img/course-2.jpg";
     return (
         <>
             <div className="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
