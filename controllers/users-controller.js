@@ -16,6 +16,7 @@ const extractRole = (email) => {
 
 const createUser = async (req,res, next) =>{
     const errors = validationResult(req);
+    console.log(req.body)
     if(!errors.isEmpty()){
         console.log(errors)
        return next (new HttpError('Your input is not valid', 422))

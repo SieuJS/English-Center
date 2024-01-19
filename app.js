@@ -16,7 +16,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
 }));
-
+app.use(express.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 
 app.use ((req,res,next) => {
