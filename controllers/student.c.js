@@ -80,7 +80,7 @@ module.exports = {
         studentModel.findOne({"_id": studentId})
             .populate("courses", "name shortDes dateStart dateEnd")
             .then((result) => {
-                console.log("result populate", result.courses);
+                //console.log("result populate", result.courses);
                 res.json({
                     total: result.courses.length,
                     courses: result.courses
