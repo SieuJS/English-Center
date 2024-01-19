@@ -6,6 +6,7 @@ import CourseQuickLink from "../../components/Student/CourseQuickLink";
 import { useHttpClient } from "../../hooks/http-hook";
 import LoadingSpinner from "../../components/shared/UIElements/LoadingSpinner";
 import ErrorModal from "../../components/shared/UIElements/ErrorModal";
+import { NavLink } from "react-router-dom";
 export default function Courses() {
     const { userId: studentId } = useContext(AuthContext);
     const { isLoading, error, sendRequest, clearError } = useHttpClient();
@@ -38,7 +39,7 @@ export default function Courses() {
                                     <h1 className="">My Courses</h1>
                                 </div>
                                 {courseList?.length > 0 && courseList?.map(course => (
-                                    <CourseCard key={course._id} course={course} />
+                                        <CourseCard course={course} key={course._id}/>
                                 ))}
                             </div>
                         </div>

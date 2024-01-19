@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 // icons
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import SchoolOutlinedIcon from "@mui/icons-material/SchoolOutlined"
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
@@ -41,6 +42,11 @@ function DashBoard(props) {
             return <MenuItem icon={item.icon} key={index}>{item.label}</MenuItem>
           })
         }
+        {auth.role == "student" && (
+          <NavLink to="/mycourses">
+            <MenuItem icon={<SchoolOutlinedIcon />} >My Courses</MenuItem>
+          </NavLink>
+        )}
       </Menu>
     </Sidebar>
   );
