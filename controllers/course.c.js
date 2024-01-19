@@ -17,16 +17,18 @@ module.exports = {
     getCourseById: async (req, res, next) => {
         const courseId = req.params.courseId;
         console.log("courseID params: ", courseId);
-        courseModel.findById(courseId)
-            .then(course => {
-                if (!course) {
-                    {
-                        next(new HttpErrors("Invalid course id. Can not get specific course", 440));
-                        return;
-                    }
-                }
-                res.json(course);
-            })
+        let course
+        try{
+        course = await courseModel.findById(courseId)
+        }
+        catch (err){
+            return next(new HttpErrors("Could not find with id"), 404)
+        }
+        if (!course) {
+            return next(new HttpErrors("Could not find with id"), 404)
+        }
+        res.json({course : course.toObject({getters : true})})
+        
     },
     getCourseAssignments: async (req, res, next) => {
         const courseId = req.params.courseId;
