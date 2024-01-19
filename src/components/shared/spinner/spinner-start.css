@@ -1,0 +1,10 @@
+#spinner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity .5s ease-out, visibility 0s linear .5s;
+    z-index: 10;
+}
+
