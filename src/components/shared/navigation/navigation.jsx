@@ -6,10 +6,11 @@ import { AuthContext } from '../../../shared/context/auth-context';
 import './navigation.css'
 const Navigation = (props) => {
     const auth = useContext(AuthContext);
-    return (<nav className={"navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0 " + props.className || ""}>
-        <Link href='/' className="navbar-brand d-flex align-items-center px-4 px-lg-5" data-link = "true">
+    return (
+    <nav className={"navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0 " + props.className || ""}>
+        <NavLink to='/' className="navbar-brand d-flex align-items-center px-4 px-lg-5" data-link = "true">
             <h2 className='m-0 nav-title text-primary'><i className='fa fa-book me-3'></i>HIGH FIVE ENGLISH</h2>
-        </Link>
+        </NavLink>
         <button type='button' className='navbar-toggler me-4' data-bs-toggle="collapse" data-bs-target="#navbarCollapse" >
         <span className="navbar-toggler-icon"></span>
         </button>
@@ -18,7 +19,7 @@ const Navigation = (props) => {
                 <NavLink to="/home" className="nav-item nav-link" data-link>Home</NavLink>
                 <NavLink to="/about" className="nav-item nav-link">About</NavLink>
                 <NavLink to="/courses" className="nav-item nav-link">Courses</NavLink>
-                <a href="contact.html" className="nav-item nav-link" data-link>Contact</a>
+                <NavLink to="/contact" className="nav-item nav-link">Contact</NavLink>
                 { !auth.isLoggedIn &&
                 <Link to = "/signin" className="nav-item d-lg-none">Join Now<i className="fa fa-arrow-right ms-3"></i></Link>
                 }

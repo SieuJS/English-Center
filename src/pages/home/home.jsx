@@ -15,6 +15,7 @@ import Testimonial from '../../components/Home/testimonial'
 import Footer from '../../components/shared/footer/footer'
 import DashBoard from '../../components/shared/navigation/SideBar'
 import ToTopBtn from '../../components/shared/navigation/to-top-btn'
+import TopBar from '../../components/shared/navigation/TopBar'
 
 export default function Home (props) {
     const auth = useContext(AuthContext);
