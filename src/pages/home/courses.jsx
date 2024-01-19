@@ -10,7 +10,7 @@ import Categories from '../../components/Home/categories'
 import Business from '../../components/Home/courses-teaser/business'
 import Toeic from '../../components/Home/courses-teaser/toeic'
 import Ielts from '../../components/Home/courses-teaser/ielts'
-import StandardEnglish from '../../components/Home/courses-teaser/standard-english'
+import HighFiveEnglish from '../../components/Home/courses-teaser/highfiveenglish'
 
 const courses = () => {
     const [loading,setLoading] = useState(true);
@@ -28,7 +28,7 @@ const courses = () => {
             <Element name = "business"></Element><Business/>
             <Element name = "toeic"></Element><Toeic/>
             <Element name = "ielts"></Element><Ielts/>
-            <Element name = "standard"></Element><StandardEnglish/>
+            <Element name = "HighFiveEnglish"></Element><HighFiveEnglish/>
         </>
         }
         </>
