@@ -7,9 +7,9 @@ module.exports = {
             .then(courses => {
                 res.json({
                     total: courses.length,
-                    courses
-                });
-            })
+                    courses : courses.map(course=> course.toObject({getters: true})) 
+                })
+                })
             .catch(err => {
                 next(new HttpErrors("Error occurs when try to get all the courses"), 430);
             })
