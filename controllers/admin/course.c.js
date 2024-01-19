@@ -30,44 +30,52 @@ module.exports = {
     },
 
     addStudent: async (req, res, next) => {
-        const { courseId, studentId } = req.body;
-        const student = await studentModel.findById(studentId);
+        console.log("get in")
+        const { courseId, studentEmail } = req.body;
+        let student; 
+        student = await studentModel.findOne({"email" : studentEmail});
         if (!student) {
-            console.log(`Student with id '${studentId}' does not exist`);
-            next(new HttpError(`Student with id '${studentId}' does not exist`));
-            return;
+            console.log(`Student with id '${studentEmail}' does not exist`);
+            return next(new HttpError(`Student with email '${studentEmail}' does not exist`));
+            
         }
-
-        courseModel.findOne({ "_id": courseId })
-            .then((course) => {
+        let identifierCourse;
+        try {
+        identifierCourse = await courseModel.findOne({ "_id": courseId })
                 // check whether the student has been in the course
-                const studentList = course.students;
-                let existed = false;
-                studentList.forEach(student_ID => {
-                    if (studentId == student_ID) {
-                        existed = true;
-                    }
-                })
 
-                if (existed) {
-                    next(new HttpError("Cannot add. The student has been existed in the course"), 430);
-                    return;
-                }
-
-                course.students.push(studentId);
-                course.save();
-
+        }
+        catch (err){
+            console.log(err)
+                    return next (new HttpError("Fail in find coud", 500))
+        }
+        if(!identifierCourse ) {
+            return next (new HttpError("Not found", 404));
+        }
+        let foundDuplicate ;
+        foundDuplicate = identifierCourse.students.filter(s =>(s._id === student._id))
+        if(foundDuplicate && foundDuplicate.length > 0) {
+            console.log(foundDuplicate.length)
+            return next(new HttpError("Delete student first", 420));
+        }
+                try {
+                identifierCourse.students.push(student._id);
+                identifierCourse.save();
+                    console.log("pass")
                 // we need to reference the course from student
-                student.courses.push(courseId);
+                student.courses.push(identifierCourse._id);
                 student.save();
-                res.json({
-                    message: `Student ${studentId} has been added to course ${courseId}`,
-                    course_name: course.name
+                console.log("pass stu")
+                }
+                catch (err) {
+                    console.log(err)
+                    return next (new HttpError("Fail in push", 500))
+                }
+                return res.json({
+                    course_name: identifierCourse.name,
+                    student : student.toObject({getter: true})
                 })
-            })
-            .catch(error => {
-                next(new HttpError(`Error occurs when try to add student to the course ${courseId}`));
-            })
+
     },
 
     addTutor: async (req, res, next) => {

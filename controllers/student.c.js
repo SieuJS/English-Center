@@ -89,5 +89,32 @@ module.exports = {
             .catch(err => {
                 next(new HttpError("Can not get course for specific student"), 440);
             })
+    },
+    getStudent : async ( req, res, next) => {
+        const {idList} = req.body
+        let studentListPromise ;
+        let studentList;
+        studentListPromise = idList.map( async id => {
+            let identifierUser;
+            try {
+                identifierUser = await studentModel.findById(id);
+            }
+            catch (err){
+                return next (new HttpError("Trobler",500))
+            }
+            if(!identifierUser){
+                return next(new HttpError("could not find", 404));
+            }
+            return identifierUser
+        })
+        try {
+            studentList = await Promise.all(studentListPromise);
+            // Use `results`, which will be an array
+        } catch (e) {
+            return next (new HttpError("Trobler",500))
+        }
+        
+        res.json({students  : studentList.map(stu => stu.toObject({getter : true}))})
+        
     }
 }
