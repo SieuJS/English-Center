@@ -10,6 +10,7 @@ import SignUp from './pages/users/signup'
 import SideBar from './components/shared/navigation/SideBar'
 import Navigation from './components/shared/navigation/navigation'
 import Footer from './components/shared/footer/footer'
+import DashBoardAdmin from './pages/admin/DashBoardAdmin'
 // import hooks
 import {AuthContext} from './shared/context/auth-context';
 import AuthHook from './hooks/auth-hook'
@@ -36,14 +37,15 @@ function App() {
     {isLoggedIn : !!token, login, logout, userId, token, role}}>
       <Navigation></Navigation>
       <div id = "app" className=" d-flex container-xxl overflow-x-hidden">
-      <SideBar/>
+
       <main className=''>
       <Routes>
         <Route path = '/courses' element = {<Courses/>} />
         <Route path = '/signin' element = {<SignIn/>}/>
-        <Route path = "/dashboard" element = {<SideBar/>}/>
+        <Route path = "/admin" element = {<DashBoardAdmin/>}/>
         <Route path='/' element ={<Home/>}/>
         <Route path = 'home' element = {<Home/>}/>
+
         {routes}
       </Routes>
       <Footer/>
