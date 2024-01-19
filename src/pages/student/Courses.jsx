@@ -30,25 +30,29 @@ export default function Courses() {
         <>
             {isLoading && (<LoadingSpinner asOverlay />)}
             {<ErrorModal error={error} onClear={clearError} />}
-            <div className="container-xxl py-5 category">
-                <div className="container">
-                    <div className="row g-3">
-                        <div className="col-lg-8 col-md-6 bg-white" >
-                            <div className="row g-3">
-                                <div className="text-md-start wow fadeInUp " data-wow-delay="0.1s" >
-                                    <h1 className="">My Courses</h1>
+            {courseList.length < 1 ? (
+                <h2 className="p-4 m-4 border-top">You have not enrolled any course.</h2>
+            ) : (
+                <div className="container-xxl py-5 category">
+                    <div className="container">
+                        <div className="row g-3">
+                            <div className="col-lg-8 col-md-6 bg-white" >
+                                <div className="row g-3">
+                                    <div className="text-md-start wow fadeInUp " data-wow-delay="0.1s" >
+                                        <h1 className="">My Courses</h1>
+                                    </div>
+                                    {courseList?.length > 0 && courseList?.map(course => (
+                                        <CourseCard course={course} key={course._id} />
+                                    ))}
                                 </div>
-                                {courseList?.length > 0 && courseList?.map(course => (
-                                        <CourseCard course={course} key={course._id}/>
-                                ))}
                             </div>
-                        </div>
-                        <div className="col-lg-4 col-md-6 bg-white" >
-                            <CourseQuickLink courses={courseList} />
+                            <div className="col-lg-4 col-md-6 bg-white" >
+                                <CourseQuickLink courses={courseList} />
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            )}
         </>
     );
 }

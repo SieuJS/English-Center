@@ -73,17 +73,19 @@ export default function CourseDetail() {
                             <div className="course-container">
                                 <div className="course-scroll">
                                     <h5 className="border-bottom my-2 py-2">Assignment of this course</h5>
-                                    <div className="course-task p-4 border-bottom">
-                                        {assignments.map(a => (
-                                            <div className="gap-2 m-2" key={a._id}>
-                                                <NavLink>
-                                                    <h6 className="py-2" >Name: {a.name}</h6>
-                                                </NavLink>
-                                                <p className="px-4">Deadline: {a.deadline}</p>
-                                                <p className="px-4">Link: <a href={a.link}>{a.link}</a></p>
-                                            </div>
-                                        ))}
-                                    </div>
+                                    {assignments.length < 1
+                                        ? (<p className="p-2 m-2">No assingment</p>)
+                                        : (<div className="course-task p-4 border-bottom">
+                                            {assignments.map(a => (
+                                                <div className="gap-2 m-2" key={a._id}>
+                                                    <NavLink>
+                                                        <h6 className="py-2" >Name: {a.name}</h6>
+                                                    </NavLink>
+                                                    <p className="px-4">Deadline: {a.deadline}</p>
+                                                    <p className="px-4">Link: <a href={a.link}>{a.link}</a></p>
+                                                </div>
+                                            ))}
+                                        </div>)}
                                 </div>
                             </div>
                         </div>
