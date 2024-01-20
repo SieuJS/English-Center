@@ -3,25 +3,35 @@ import { AuthContext } from "../../shared/context/auth-context";
 import { responsiveFontSizes } from "@mui/material";
 import  CourseCard  from "../../components/Student/CourseCard";
 import CourseQuickLink from "../../components/Student/CourseQuickLink";
+import { useHttpClient } from "../../hooks/http-hook";
+
 
 export default function Courses() {
-    const { userId: studentId } = useContext(AuthContext);
+    const auth = useContext(AuthContext)
     const [courseList, setCourseList] = useState([]);
-
-    useEffect(() => {
-        async function fetchCourses() {
-            const courses = fetch("http://localhost:5000/api/student/courses", {
-                method: 'POST',
-                body: JSON.stringify({ studentId })
-            })
-                .then(response => {
-                    const list = response.json().courses;
-                    setCourseList(list);
-                    console.log(list)
+    const { isLoading, error, sendRequest, clearError } = useHttpClient()
+    useEffect(async () => {
+        let courses
+        try {
+            courses = await sendRequest(
+                "http://localhost:5000/api/student/courses",
+                "POST",
+                {
+                    "Content-Type": "application/json",
+                },
+                JSON.stringify({
+                    // username: formState.inputs.name.value,
+                    studentId : auth.userId
                 })
+            )
+        }catch (err) {
+            console.log(err)
         }
-        fetchCourses();
+
+        console.log(courses);
+        setCourseList(courses)
     }, []);
+
 
     return (
         <div className="container-xxl py-5 category">

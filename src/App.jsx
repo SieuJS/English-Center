@@ -19,7 +19,7 @@ function App() {
 
   const { login, logout, token, userId, role } = AuthHook();
 
-
+  console.log(userId)
   let routes;
 
   if (token) {
@@ -54,7 +54,6 @@ function App() {
         </main>
       </div>
     </AuthContext.Provider>
-
   )
 }
 

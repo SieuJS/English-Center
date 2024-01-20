@@ -88,11 +88,11 @@ export default function SignIn(props) {
     const authSubmitHandler = async (event) => {
         event.preventDefault();
         let data;
-<<<<<<< HEAD
-        console.log(formState.inputs)
-=======
 
->>>>>>> 034615e2d0798aa948faac9f39e244f6d41075c0
+        console.log(formState.inputs)
+
+
+
         if (isLoginMode) {
             try {
                 data = await sendRequest(
@@ -111,7 +111,7 @@ export default function SignIn(props) {
 
             }
         } else {
-<<<<<<< HEAD
+
           try {
             data = await sendRequest(
                 apiSignup,
@@ -129,26 +129,6 @@ export default function SignIn(props) {
           )} 
         catch (err) {
           }
-=======
-            try {
-                data = await sendRequest(
-                    apiSignup,
-                    "POST",
-                    {
-                        "Content-Type": "application/json",
-                    },
-                    JSON.stringify({
-                        // username: formState.inputs.name.value,
-                        username: formState.inputs.username.value,
-                        password: formState.inputs.password.value,
-                        role: formState.inputs.role.value,
-                        name: formState.inputs.name.value
-                    })
-                )
-            }
-            catch (err) {
-            }
->>>>>>> 034615e2d0798aa948faac9f39e244f6d41075c0
         }
         if (data) {
             auth.login(data.userId, data.token, data.role);
