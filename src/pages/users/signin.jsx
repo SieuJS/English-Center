@@ -88,10 +88,7 @@ export default function SignIn(props) {
     const authSubmitHandler = async (event) => {
         event.preventDefault();
         let data;
-
         console.log(formState.inputs)
-
-
 
         if (isLoginMode) {
             try {
@@ -112,23 +109,24 @@ export default function SignIn(props) {
             }
         } else {
 
-          try {
-            data = await sendRequest(
-                apiSignup,
-                "POST",
-                {
-                  "Content-Type": "application/json",
-                },
-                JSON.stringify({
-                  // username: formState.inputs.name.value,
-                  username: formState.inputs.username.value,
-                  password: formState.inputs.password.value,
-                  role : formState.inputs.role.value,
-                  name : formState.inputs.name.value
-                })
-          )} 
-        catch (err) {
-          }
+            try {
+                data = await sendRequest(
+                    apiSignup,
+                    "POST",
+                    {
+                        "Content-Type": "application/json",
+                    },
+                    JSON.stringify({
+                        // username: formState.inputs.name.value,
+                        username: formState.inputs.username.value,
+                        password: formState.inputs.password.value,
+                        role: formState.inputs.role.value,
+                        name: formState.inputs.name.value
+                    })
+                )
+            }
+            catch (err) {
+            }
         }
         if (data) {
             auth.login(data.userId, data.token, data.role);

@@ -12,6 +12,7 @@ import SideBar from './components/shared/navigation/SideBar'
 import Navigation from './components/shared/navigation/navigation'
 import Footer from './components/shared/footer/footer'
 import DashBoardAdmin from './pages/admin/DashBoardAdmin'
+import CourseDetail from './pages/student/CourseDetail'
 // import hooks
 import { AuthContext } from './shared/context/auth-context';
 import AuthHook from './hooks/auth-hook'
@@ -46,9 +47,8 @@ function App() {
             <Route path='/' element={<Home />} />
             <Route path='home' element={<Home />} />
             {routes}
-            {userId && (
-              <Route path="/mycourses" element={<MyCourses />} />
-            )}
+            {userId && <Route path="/mycourses/" element={<MyCourses />} />}
+            {userId && <Route path="/course/:courseId" element={<CourseDetail/>} />}
           </Routes>
           <Footer />
         </main>

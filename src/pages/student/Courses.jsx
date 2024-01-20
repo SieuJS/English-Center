@@ -1,55 +1,58 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../shared/context/auth-context";
 import { responsiveFontSizes } from "@mui/material";
-import  CourseCard  from "../../components/Student/CourseCard";
+import CourseCard from "../../components/Student/CourseCard";
 import CourseQuickLink from "../../components/Student/CourseQuickLink";
 import { useHttpClient } from "../../hooks/http-hook";
-
-
+import LoadingSpinner from "../../components/shared/UIElements/LoadingSpinner";
+import ErrorModal from "../../components/shared/UIElements/ErrorModal";
+import { NavLink } from "react-router-dom";
 export default function Courses() {
-    const auth = useContext(AuthContext)
+    const { userId: studentId } = useContext(AuthContext);
+    const { isLoading, error, sendRequest, clearError } = useHttpClient();
     const [courseList, setCourseList] = useState([]);
-    const { isLoading, error, sendRequest, clearError } = useHttpClient()
-    useEffect(async () => {
-        let courses
-        try {
-            courses = await sendRequest(
-                "http://localhost:5000/api/student/courses",
-                "POST",
-                {
-                    "Content-Type": "application/json",
-                },
-                JSON.stringify({
-                    // username: formState.inputs.name.value,
-                    studentId : auth.userId
-                })
-            )
-        }catch (err) {
-            console.log(err)
+    //console.log("student id in course", studentId);
+    useEffect(() => {
+        async function fetchCode() {
+            try {
+                const data = await sendRequest(`http://localhost:5000/api/student/courses`, 'POST', {
+                    'Content-Type': 'application/json'
+                }, JSON.stringify({ studentId }));
+                setCourseList(data.courses);
+            }
+            catch (error) {
+            }
         }
-
-        console.log(courses);
-        setCourseList(courses)
-    }, []);
-
+        fetchCode();
+    }, [sendRequest]);
 
     return (
-        <div className="container-xxl py-5 category">
-            <div className="container">
-                <div className="row g-3">
-                    <div className="col-lg-8 col-md-6 bg-white" >
+        <>
+            {isLoading && (<LoadingSpinner asOverlay />)}
+            {<ErrorModal error={error} onClear={clearError} />}
+            {courseList.length < 1 ? (
+                <h2 className="p-4 m-4 border-top">You have not enrolled any course.</h2>
+            ) : (
+                <div className="container-xxl py-5 category">
+                    <div className="container">
                         <div className="row g-3">
-                            <div className="text-md-start wow fadeInUp " data-wow-delay="0.1s" >
-                                <h1 className="">My Courses</h1>
+                            <div className="col-lg-8 col-md-6 bg-white" >
+                                <div className="row g-3">
+                                    <div className="text-md-start wow fadeInUp " data-wow-delay="0.1s" >
+                                        <h1 className="">My Courses</h1>
+                                    </div>
+                                    {courseList?.length > 0 && courseList?.map(course => (
+                                        <CourseCard course={course} key={course._id} />
+                                    ))}
+                                </div>
                             </div>
-                            {courseList.map(course => (
-                                <CourseCard course={course} />
-                            ))}
+                            <div className="col-lg-4 col-md-6 bg-white" >
+                                <CourseQuickLink courses={courseList} />
+                            </div>
                         </div>
-                        <CourseQuickLink courses={courseList} />
                     </div>
                 </div>
-            </div>
-        </div>
+            )}
+        </>
     );
 }
